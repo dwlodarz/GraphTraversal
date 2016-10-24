@@ -17,3 +17,4 @@ namespace GraphTraversal.WebServices.Contracts
         void DoWork();
     }
 }
+
