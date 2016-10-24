@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataManagementService.svc" />
+    <Content Include="DomainSpecificService.svc" />
+    <Content Include="FrontEndService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +70,14 @@
       <DependentUpon>DataManagementService.svc</DependentUpon>
     </Compile>
     <Compile Include="Contracts\IDataManagementService.cs" />
+    <Compile Include="DomainSpecificService.svc.cs">
+      <DependentUpon>DomainSpecificService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEndService.svc.cs">
+      <DependentUpon>FrontEndService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Contracts\IFrontEndService.cs" />
+    <Compile Include="Contracts\IDomainSpecificService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
