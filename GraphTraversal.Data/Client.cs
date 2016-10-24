@@ -24,6 +24,9 @@ namespace GraphTraversal.Data
             , ConfigurationManager.AppSettings["GraphDBPassword"])
         {
             this.Connect();
+            var r = (this as IGraphClient);
+            var a = r.Cypher.Match("(m:client)").Return((m => new { mm = m.As<object>() }));
+            var data = a.Results.ToList();
         }
 
         /// <summary>

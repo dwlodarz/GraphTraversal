@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="GraphTraversal.WebServices.DataManagementService" CodeBehind="DataManagementService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="GraphTraversal.WebServices.DataManagementService" CodeBehind="DataManagementService.svc.cs" Factory="SimpleInjector.Integration.Wcf.SimpleInjectorServiceHostFactory, SimpleInjector.Integration.Wcf" %>
