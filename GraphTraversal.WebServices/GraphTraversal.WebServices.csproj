@@ -67,7 +67,7 @@
     <Compile Include="DataManagementService.svc.cs">
       <DependentUpon>DataManagementService.svc</DependentUpon>
     </Compile>
-    <Compile Include="IDataManagementService.cs" />
+    <Compile Include="Contracts\IDataManagementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
