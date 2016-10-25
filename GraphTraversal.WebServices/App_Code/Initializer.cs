@@ -20,6 +20,8 @@ namespace GraphTraversal.WebServices.App_Code
         /// </summary>
         public static void AppInitialize()
         {
+            log4net.Config.XmlConfigurator.Configure();
+
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WcfOperationLifestyle();
             container.Register<IClient, Client>(Lifestyle.Scoped);

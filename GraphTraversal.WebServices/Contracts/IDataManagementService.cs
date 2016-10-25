@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GraphTraversal.WebServices.Contracts
 {
@@ -14,6 +15,6 @@ namespace GraphTraversal.WebServices.Contracts
     {
         [OperationContract]
         [WebInvoke(Method="GET", ResponseFormat=WebMessageFormat.Json, BodyStyle=WebMessageBodyStyle.Wrapped, UriTemplate="dowork")]
-        void DoWork();
+        Task<string> DoWork();
     }
 }
