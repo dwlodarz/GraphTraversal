@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraphTraversal.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -14,7 +15,10 @@ namespace GraphTraversal.WebServices.Contracts
     public interface IDataManagementService
     {
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "add")]
-        Task<string> AddNode();
+        [WebInvoke(Method = "POST",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "add")]
+        Task AddNode(NodeEntity node);
     }
 }

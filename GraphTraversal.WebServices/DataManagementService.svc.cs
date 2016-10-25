@@ -30,12 +30,14 @@ namespace GraphTraversal.WebServices
         {
         }
 
-        public async Task<string> AddNode()
+        /// <summary>
+        /// Adds a node to db.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns></returns>
+        public async Task AddNode(NodeEntity node)
         {
-            var node = new NodeEntity{Id="aaa", Label="sss" };
             await this.Manager.AddAsync(node);
-            //Log.Error("test");
-            return "test";
         }
     }
 }
