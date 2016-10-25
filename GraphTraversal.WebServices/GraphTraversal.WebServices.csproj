@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\Initializer.cs" />
+    <Compile Include="BaseService.cs" />
     <Compile Include="DataManagementService.svc.cs">
       <DependentUpon>DataManagementService.svc</DependentUpon>
     </Compile>

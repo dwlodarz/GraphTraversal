@@ -14,7 +14,7 @@ namespace GraphTraversal.WebServices.Contracts
     public interface IDataManagementService
     {
         [OperationContract]
-        [WebInvoke(Method="GET", ResponseFormat=WebMessageFormat.Json, BodyStyle=WebMessageBodyStyle.Wrapped, UriTemplate="dowork")]
-        Task<string> DoWork();
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "add")]
+        Task<string> AddNode();
     }
 }

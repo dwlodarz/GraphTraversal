@@ -7,6 +7,8 @@ using SimpleInjector;
 using GraphTraversal.Data.Interfaces;
 using GraphTraversal.Data;
 using SimpleInjector.Integration.Wcf;
+using GraphTraversal.Business.Interfaces;
+using GraphTraversal.Business;
 
 namespace GraphTraversal.WebServices.App_Code
 {
@@ -22,11 +24,24 @@ namespace GraphTraversal.WebServices.App_Code
         {
             log4net.Config.XmlConfigurator.Configure();
 
+            // register DI.
+            var container = SimpleInjectorRegistartion();
+            SimpleInjectorServiceHostFactory.SetContainer(container);
+        }
+
+        /// <summary>
+        /// Contract registration (DI).
+        /// </summary>
+        /// <returns>The Container.</returns>
+        private static Container SimpleInjectorRegistartion()
+        {
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WcfOperationLifestyle();
             container.Register<IClient, Client>(Lifestyle.Scoped);
+            container.Register<INodeManager, NodeManager>(Lifestyle.Scoped);
             container.Verify();
-            SimpleInjectorServiceHostFactory.SetContainer(container);
-        } 
+
+            return container;
+        }
     }
 }

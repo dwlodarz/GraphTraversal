@@ -1,0 +1,37 @@
+﻿using log4net;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using GraphTraversal.Data.Interfaces;
+using GraphTraversal.Business.Interfaces;
+
+namespace GraphTraversal.Business
+{
+    /// <summary>
+    /// Base class for data management.
+    /// </summary>
+    public abstract class BaseManager
+    {
+        /// <summary>
+        /// Logger instance.
+        /// </summary>
+        protected static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        /// <summary>
+        /// Gets or sets database context.
+        /// </summary>
+        protected IClient DbContext { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseManager"/> class.
+        /// </summary>
+        /// <param name="dbContext">Database context.</param>
+        protected BaseManager(IClient dbContext)
+        {
+            this.DbContext = dbContext;
+        }
+    }
+}
