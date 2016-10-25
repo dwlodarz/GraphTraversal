@@ -1,4 +1,4 @@
-﻿using GraphTraversal.Data.Entities;
+﻿using GraphTraversal.Business.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +19,6 @@ namespace GraphTraversal.WebServices.Contracts
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "add")]
-        Task AddNode(NodeEntity node);
+        Task AddNode(NodeModel node);
     }
 }

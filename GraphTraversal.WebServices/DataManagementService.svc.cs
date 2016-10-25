@@ -1,6 +1,6 @@
 ﻿using GraphTraversal.Business;
 using GraphTraversal.Business.Interfaces;
-using GraphTraversal.Data.Entities;
+using GraphTraversal.Business.Models;
 using GraphTraversal.WebServices.Contracts;
 using log4net;
 using Neo4jClient.Cypher;
@@ -10,6 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,9 +36,17 @@ namespace GraphTraversal.WebServices
         /// </summary>
         /// <param name="node">The node.</param>
         /// <returns></returns>
-        public async Task AddNode(NodeEntity node)
+        public async Task AddNode(NodeModel node)
         {
-            await this.Manager.AddAsync(node);
+            try
+            {
+                await this.Manager.RelatePath(node);
+            }
+            catch (Exception e)
+            {
+                WebOperationContext ctx = WebOperationContext.Current;
+                ctx.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+            }
         }
     }
 }

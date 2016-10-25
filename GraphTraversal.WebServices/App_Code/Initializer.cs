@@ -4,11 +4,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using SimpleInjector;
-using GraphTraversal.Data.Interfaces;
-using GraphTraversal.Data;
 using SimpleInjector.Integration.Wcf;
 using GraphTraversal.Business.Interfaces;
 using GraphTraversal.Business;
+using GraphTraversal.Data.Interfaces;
+using GraphTraversal.Data;
 
 namespace GraphTraversal.WebServices.App_Code
 {

@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using GraphTraversal.Data.Interfaces;
 using GraphTraversal.Business.Interfaces;
+using GraphTraversal.Business.Models;
+using GraphTraversal.Data.Entities;
 
 namespace GraphTraversal.Business
 {
@@ -32,6 +34,15 @@ namespace GraphTraversal.Business
         protected BaseManager(IClient dbContext)
         {
             this.DbContext = dbContext;
+            this.CreateMaps();
+        }
+
+        /// <summary>
+        /// Creates mapping.
+        /// </summary>
+        protected virtual void CreateMaps()
+        {
+            AutoMapper.Mapper.CreateMap<NodeModel, NodeEntity>().ReverseMap();
         }
     }
 }

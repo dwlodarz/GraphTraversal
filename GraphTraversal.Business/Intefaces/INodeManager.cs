@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraphTraversal.Business.Models;
+using System;
 namespace GraphTraversal.Business.Interfaces
 {
     /// <summary>
@@ -6,6 +7,6 @@ namespace GraphTraversal.Business.Interfaces
     /// </summary>
     public interface INodeManager
     {
-        System.Threading.Tasks.Task AddAsync(GraphTraversal.Data.Entities.NodeEntity node);
+        System.Threading.Tasks.Task RelatePath(NodeModel node);
     }
 }

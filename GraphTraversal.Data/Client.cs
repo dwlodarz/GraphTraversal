@@ -1,9 +1,11 @@
 ﻿using GraphTraversal.Data.Interfaces;
+using log4net;
 using Neo4jClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Reflection;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +18,11 @@ namespace GraphTraversal.Data
     public class Client : GraphClient, IClient
     {
         /// <summary>
+        /// Logger instance.
+        /// </summary>
+        protected static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        /// <summary>
         /// Initializes the instance of Client.
         /// </summary>
         public Client()
@@ -23,10 +30,7 @@ namespace GraphTraversal.Data
             , ConfigurationManager.AppSettings["GraphDBUser"]
             , ConfigurationManager.AppSettings["GraphDBPassword"])
         {
-            this.Connect();
-            //var r = (this as IGraphClient);
-            //var a = r.Cypher.Match("(m:client)").Return((m => new { mm = m.As<object>() }));
-            //var data = a.Results.ToList();
+            this.Initialize();
         }
 
         /// <summary>
@@ -36,6 +40,21 @@ namespace GraphTraversal.Data
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
+        }
+
+        /// <summary>
+        /// Initializes the connection.
+        /// </summary>
+        private void Initialize()
+        {
+            try
+            {
+                this.Connect();
+            }
+            catch (Exception e)
+            {
+                log.ErrorFormat("The connection with database cannot be initiated {0}", e);
+            }
         }
     }
 }

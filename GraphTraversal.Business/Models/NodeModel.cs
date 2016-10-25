@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace GraphTraversal.Data.Entities
+namespace GraphTraversal.Business.Models
 {
     /// <summary>
     /// Stores a node with related data.
     /// </summary>
-    public class NodeEntity
+    public class NodeModel
     {
         /// <summary>
         /// A unique string identifying the node.
@@ -20,5 +19,10 @@ namespace GraphTraversal.Data.Entities
         /// Human readable text to be displayed in UI.
         /// </summary>
         public string Label { get; set; }
+
+        /// <summary>
+        /// IDs of nodes adjacent to current.
+        /// </summary>
+        public IList<NodeModel> AdjacentNodes { get; set; }
     }
 }
