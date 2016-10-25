@@ -17,8 +17,6 @@ namespace GraphTraversal.Business
     /// </summary>
     public class NodeManager : BaseManager, INodeManager
     {
-        private const string NodeEntity = "NodeEntity";
-
         /// <summary>
         /// Initializes a new instance of the <see cref="NodeManager"/> class.
         /// </summary>
