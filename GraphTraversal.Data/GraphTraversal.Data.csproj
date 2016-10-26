@@ -54,9 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseRepository.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Entities\NodeEntity.cs" />
+    <Compile Include="Interfaces\INodeRepository.cs" />
     <Compile Include="Interfaces\IClient.cs" />
+    <Compile Include="NodeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

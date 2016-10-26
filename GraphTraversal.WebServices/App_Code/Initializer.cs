@@ -39,6 +39,8 @@ namespace GraphTraversal.WebServices.App_Code
             container.Options.DefaultScopedLifestyle = new WcfOperationLifestyle();
             container.Register<IClient, Client>(Lifestyle.Scoped);
             container.Register<INodeManager, NodeManager>(Lifestyle.Scoped);
+            container.Register<INodeRepository, NodeRepository>(Lifestyle.Scoped);
+            container.Register<ITraversingManager, TraversingManager>(Lifestyle.Scoped);
             container.Verify();
 
             return container;

@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="BaseManager.cs" />
     <Compile Include="Intefaces\INodeManager.cs" />
+    <Compile Include="Intefaces\ITraversingManager.cs" />
     <Compile Include="Models\NodeModel.cs" />
     <Compile Include="NodeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

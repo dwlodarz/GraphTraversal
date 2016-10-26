@@ -13,8 +13,8 @@ namespace GraphTraversal.WebServices.Contracts
     public interface IDomainSpecificService
     {
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "dswork")]
-        void DoWork();
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "shortestPath/{startId}/{endId}")]
+        void ShortestPath(string startId, string endId);
     }
 }
 

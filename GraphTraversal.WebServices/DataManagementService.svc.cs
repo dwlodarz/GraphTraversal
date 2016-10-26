@@ -20,8 +20,6 @@ namespace GraphTraversal.WebServices
     // NOTE: In order to launch WCF Test Client for testing this service, please select DataManagementService.svc or DataManagementService.svc.cs at the Solution Explorer and start debugging.
     public class DataManagementService : BaseService<INodeManager>, IDataManagementService
     {
-        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseService"/> class.
         /// </summary>
