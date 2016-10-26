@@ -59,6 +59,7 @@
     <Compile Include="Intefaces\INodeManager.cs" />
     <Compile Include="Intefaces\ITraversingManager.cs" />
     <Compile Include="Models\NodeModel.cs" />
+    <Compile Include="Models\ShortestPathModel.cs" />
     <Compile Include="NodeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TraversingManager.cs" />

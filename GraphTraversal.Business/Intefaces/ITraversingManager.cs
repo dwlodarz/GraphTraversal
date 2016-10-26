@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GraphTraversal.Business.Models;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 namespace GraphTraversal.Business.Interfaces
 {
@@ -12,7 +14,7 @@ namespace GraphTraversal.Business.Interfaces
         /// </summary>
         /// <param name="startId">Start id.</param>
         /// <param name="endId">End id.</param>
-        /// <returns></returns>
-        Task ShortestPath(string startId, string endId);
+        /// <returns>The shortest path.</returns>
+        Task<ShortestPathModel> ShortestPath(string startId, string endId);
     }
 }

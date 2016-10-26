@@ -20,5 +20,10 @@ namespace GraphTraversal.Data.Entities
         /// Human readable text to be displayed in UI.
         /// </summary>
         public string Label { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cost of getting from one node to another.
+        /// </summary>
+        public int Cost { get; set; }
     }
 }

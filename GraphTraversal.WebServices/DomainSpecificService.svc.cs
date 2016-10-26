@@ -1,5 +1,6 @@
 ﻿using GraphTraversal.Business;
 using GraphTraversal.Business.Interfaces;
+using GraphTraversal.Business.Models;
 using GraphTraversal.WebServices.Contracts;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GraphTraversal.WebServices
 {
@@ -29,16 +31,17 @@ namespace GraphTraversal.WebServices
         /// </summary>
         /// <param name="startId">Id of the start node.</param>
         /// <param name="endId">Id of the end node.</param>
-        public async void ShortestPath(string startId, string endId)
+        public async Task<ShortestPathModel> ShortestPath(string startId, string endId)
         {
             try
             {
-                await this.Manager.ShortestPath(startId, endId);
+                return await this.Manager.ShortestPath(startId, endId);
             }
             catch (Exception e)
             {
                 WebOperationContext ctx = WebOperationContext.Current;
                 ctx.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                return null;
             }
         }
     }

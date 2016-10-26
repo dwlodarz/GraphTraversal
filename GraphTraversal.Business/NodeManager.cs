@@ -47,6 +47,7 @@ namespace GraphTraversal.Business
             try
             {
                 var node = AutoMapper.Mapper.Map<NodeEntity>(nodeModel);
+                node.Cost = 1;
 
                 await this.DbContext.Cypher
                     .Merge("(n:NodeEntity { Id: {id} })")

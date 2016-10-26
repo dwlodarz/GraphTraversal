@@ -25,9 +25,8 @@ namespace GraphTraversal.Data
         /// <summary>
         /// Gets connected nodes.
         /// </summary>
-        /// <param name="id">Id of the root of a subtree.</param>
         /// <returns>List of connected nodes.</returns>
-        public async Task<IEnumerable<SubTreeEntity>> GetConnectedNodes(string id)
+        public async Task<IEnumerable<SubTreeEntity>> GetWholeTree()
         {
             try
             {
@@ -35,7 +34,7 @@ namespace GraphTraversal.Data
                                 .OptionalMatch("(node:NodeEntity)-[CONNECTED]-(child:NodeEntity)")
                                 .Return((node, child) => new SubTreeEntity {
                                    Root = node.As<NodeEntity>(),
-                                   Children = child.CollectAsDistinct<NodeEntity>()
+                                   Children = child.CollectAsDistinct<NodeEntity>(),
                                 }).ResultsAsync;
             }
             catch (Exception e)

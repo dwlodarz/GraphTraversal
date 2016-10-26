@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GraphTraversal.Data.Entities;
+using System;
+using System.Collections.Generic;
 namespace GraphTraversal.Data.Interfaces
 {
     /// <summary>
@@ -6,6 +8,10 @@ namespace GraphTraversal.Data.Interfaces
     /// </summary>
     public interface INodeRepository
     {
-        System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<GraphTraversal.Data.Entities.NodeEntity>> GetConnectedNodes(string id);
+        /// <summary>
+        /// Gets connected nodes.
+        /// </summary>
+        /// <returns>List of connected nodes.</returns>
+        System.Threading.Tasks.Task<IEnumerable<SubTreeEntity>> GetWholeTree();
     }
 }

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using GraphTraversal.Business.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GraphTraversal.WebServices.Contracts
 {
@@ -14,7 +16,7 @@ namespace GraphTraversal.WebServices.Contracts
     {
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "shortestPath/{startId}/{endId}")]
-        void ShortestPath(string startId, string endId);
+        Task<ShortestPathModel> ShortestPath(string startId, string endId);
     }
 }
 

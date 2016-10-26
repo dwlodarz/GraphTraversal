@@ -57,6 +57,7 @@
     <Compile Include="BaseRepository.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Entities\NodeEntity.cs" />
+    <Compile Include="Entities\SubTreeEntity.cs" />
     <Compile Include="Interfaces\INodeRepository.cs" />
     <Compile Include="Interfaces\IClient.cs" />
     <Compile Include="NodeRepository.cs" />
