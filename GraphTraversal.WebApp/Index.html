@@ -30,7 +30,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <button type="button" class="btn btn-primary" ng-click="shortestPath()">Shortest Path</button>
+                <button type="button" class="btn btn-primary has-spinner active1" ng-click="shortestPath()" ng-hide="resetVisible">
+                    <span class="spinner"><i class="icon-spin icon-refresh"></i></span>
+                    Shortest Path
+                </button>
+                <button type="button" class="btn btn-warning" ng-click="reset()" ng-show="resetVisible">Reset</button>
                 <span style="color:red;">{{error}}</span>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,7 +46,7 @@
         <!-- /.container -->
     </nav>
     <div class="alchemy" id="alchemy"></div>
-    
+
     <script src="scripts/jquery-2.1.4.min.js"></script>
     <script src="scripts/angular.js"></script>
     <script src="scripts/angular-route.js"></script>

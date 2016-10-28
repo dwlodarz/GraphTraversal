@@ -8,11 +8,15 @@
                 var getShortestPathRequest = $http({
                     method: 'GET',
                     url: apiUri + 'shortestPath/' + startId + '/' + endId
-                }).then(function (response) {
-                    if (response && response.data) {
-                        return response.data;
-                    }
-                });
+                })
+                    .then(function (response) {
+                        if (response && response.data) {
+                            return response.data;
+                        }
+                    })
+                    .catch(function (ex) {
+                        return ex;
+                    });
                 return getShortestPathRequest;
             }
             return {
