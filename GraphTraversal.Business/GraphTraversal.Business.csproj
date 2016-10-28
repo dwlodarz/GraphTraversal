@@ -48,6 +48,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,7 +59,10 @@
     <Compile Include="BaseManager.cs" />
     <Compile Include="Intefaces\INodeManager.cs" />
     <Compile Include="Intefaces\ITraversingManager.cs" />
+    <Compile Include="Models\EdgeViewModel.cs" />
+    <Compile Include="Models\GraphViewModel.cs" />
     <Compile Include="Models\NodeModel.cs" />
+    <Compile Include="Models\NodeViewModel.cs" />
     <Compile Include="Models\ShortestPathModel.cs" />
     <Compile Include="NodeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

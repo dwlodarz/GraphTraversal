@@ -1,16 +1,17 @@
 ﻿'use strict';
 
 myApp.controller("MainController", ['$scope', '$log', 'graphService', function ($scope, $log, movieService) {
-
+    $scope.shortestPathLabel = "Shortest Path";
     $scope.shortestPath = function ()
     {
-
+        alert('test')
     }
+
 
     var initAlchemyGraphDrawing = function ()
     {
         var config = {
-            dataSource: 'Assets/test.html',
+            dataSource: 'http://localhost/GraphTraversal.WebServices/FrontEndService.svc/graphdata',
 
             linkDistance: function () { return 40; },
 

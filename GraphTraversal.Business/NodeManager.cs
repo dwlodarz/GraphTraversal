@@ -18,12 +18,18 @@ namespace GraphTraversal.Business
     public class NodeManager : BaseManager, INodeManager
     {
         /// <summary>
+        /// Noge repository instance.
+        /// </summary>
+        private readonly INodeRepository nodeRepository;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="NodeManager"/> class.
         /// </summary>
         /// <param name="dbClient">Database context.</param>
-        public NodeManager(IClient dbClient)
+        public NodeManager(IClient dbClient, INodeRepository nodeRepository)
             : base(dbClient)
         {
+            this.nodeRepository = nodeRepository;
         }
 
         /// <summary>
@@ -35,6 +41,39 @@ namespace GraphTraversal.Business
         {
             await this.AddOrUpdateAsync(node);
             await this.AdjacentNodesIfDoNotExistAsync(node.Id, node.AdjacentNodes);
+        }
+
+        /// <summary>
+        /// Retrieves the graph and converts it into displayable data type.
+        /// </summary>
+        /// <returns>Graph view model.</returns>
+        public async Task<GraphViewModel> GetGraphDataForDisplaying()
+        {
+            IEnumerable<SubTreeEntity> wholeTree = await this.nodeRepository.GetWholeTree();
+            GraphViewModel viewModel = new GraphViewModel();
+            if (wholeTree != null && wholeTree.Any())
+            {
+                viewModel.Nodes = wholeTree
+                    .Select(wte => new NodeViewModel
+                    {
+                        Id = wte.Root.Id,
+                        Label = wte.Root.Label,
+                        Type = "Connected"
+                    });
+
+                List<EdgeViewModel> listOfEdges = new List<EdgeViewModel>();
+                wholeTree.ToList().ForEach(st =>
+                {
+                    foreach (var child in st.Children)
+                    {
+                        listOfEdges.Add(new EdgeViewModel { Source = st.Root.Id, Target = child.Id, Label="Connected1" });
+                    }
+                });
+
+                viewModel.Edges = listOfEdges;
+            }
+
+            return viewModel;
         }
 
         /// <summary>

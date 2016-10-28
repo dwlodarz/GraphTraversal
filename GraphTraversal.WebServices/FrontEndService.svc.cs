@@ -1,19 +1,47 @@
-﻿using GraphTraversal.WebServices.Contracts;
+﻿using GraphTraversal.Business.Interfaces;
+using GraphTraversal.Business.Models;
+using GraphTraversal.WebServices.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GraphTraversal.WebServices
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "FrontEndService" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select FrontEndService.svc or FrontEndService.svc.cs at the Solution Explorer and start debugging.
-    public class FrontEndService : IFrontEndService
+    /// <summary>
+    /// Service used for the front-end application.
+    /// </summary>
+    public class FrontEndService : BaseService<INodeManager>, IFrontEndService
     {
-        public void DoWork()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FrontEndService"/> class.
+        /// </summary>
+        /// <param name="nodeManager">Database node manager.</param>
+        public FrontEndService(INodeManager nodeManager)
+            : base(nodeManager)
         {
+        }
+
+        /// <summary>
+        /// Gets the data for displaying.
+        /// </summary>
+        /// <returns>Graph view model</returns>
+        public async Task<GraphViewModel> GetGraphData()
+        {
+            try
+            {
+                return await this.Manager.GetGraphDataForDisplaying();
+            }
+            catch (Exception e)
+            {
+                WebOperationContext ctx = WebOperationContext.Current;
+                ctx.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                return null;
+            }
         }
     }
 }
