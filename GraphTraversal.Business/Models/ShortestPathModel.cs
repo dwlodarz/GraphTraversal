@@ -14,6 +14,6 @@ namespace GraphTraversal.Business.Models
         /// <summary>
         /// Gets or sets the ordered list of concurrent nodes.
         /// </summary>
-        public List<NodeModel> OrderedShortestPath { get; set; }
+        public List<NodeViewModel> Path { get; set; }
     }
 }

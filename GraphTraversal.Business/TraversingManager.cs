@@ -52,7 +52,7 @@ namespace GraphTraversal.Business
                 return null;
             }
 
-            return new ShortestPathModel { OrderedShortestPath = shortestPath.Select(sp => new NodeModel { Id = sp }).ToList() };
+            return new ShortestPathModel { Path = shortestPath.Select(sp => new NodeViewModel { Id = sp }).ToList() };
         }
 
         /// <summary>

@@ -2,21 +2,21 @@
     'use strict';
     angular.module('app.services', [])
         .service("graphService", ['$q', '$http', function ($q, $http) {
-            var apiUri = 'http://dvdlibrary.azurewebsites.net/api/movie/';
+            var apiUri = 'http://localhost/GraphTraversal.WebServices/DomainSpecificService.svc/';
 
-            function getMovies(query) {
-                var getMoviesRequest = $http({
+            function getShortestPath(startId, endId) {
+                var getShortestPathRequest = $http({
                     method: 'GET',
-                    url: apiUri + 'AvailableMovies?q=' + query
+                    url: apiUri + 'shortestPath/' + startId + '/' + endId
                 }).then(function (response) {
                     if (response && response.data) {
                         return response.data;
                     }
                 });
-                return getMoviesRequest;
+                return getShortestPathRequest;
             }
             return {
-                GetMovies: getMovies,
+                GetShortestPath: getShortestPath,
             };
         }]);
 })();
