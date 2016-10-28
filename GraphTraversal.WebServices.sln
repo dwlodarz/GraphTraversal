@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphTraversal.Data", "Grap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphTraversal.WebApp", "GraphTraversal.WebApp\GraphTraversal.WebApp.csproj", "{38DD8365-DBA8-4D9D-A0FF-6224FA717B6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphTraversal.DataLoader", "GraphTraversal.DataLoader\GraphTraversal.DataLoader.csproj", "{B9E8FFDD-4B43-4AC5-8A04-C47C0C670A70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{38DD8365-DBA8-4D9D-A0FF-6224FA717B6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38DD8365-DBA8-4D9D-A0FF-6224FA717B6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38DD8365-DBA8-4D9D-A0FF-6224FA717B6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9E8FFDD-4B43-4AC5-8A04-C47C0C670A70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E8FFDD-4B43-4AC5-8A04-C47C0C670A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E8FFDD-4B43-4AC5-8A04-C47C0C670A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E8FFDD-4B43-4AC5-8A04-C47C0C670A70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

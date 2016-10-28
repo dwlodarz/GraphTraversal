@@ -6,3 +6,5 @@ GraphTraversal.Data/bin/
 request.txt
 GraphTraversal.WebApp/obj/
 GraphTraversal.WebApp/bin/
+GraphTraversal.DataLoader/bin/
+GraphTraversal.DataLoader/obj/
