@@ -34,5 +34,14 @@
 > **Test Data**
 > - Test data is located in ['GraphTraversal/GraphXml/'](https://github.com/dwlodarz/GraphTraversal/tree/master/GraphXml)
 
+## Web application
+The FrontEnd application is written n such a way that it doesn't require scrolling because it takes advantage of SVG and d3.js library bound together with alchemy.js. Basically, it allows to move the graph around, zoom-in and zoom-out and to change the positioning of nodes and edges completelly.
+After 2 nodes were selected and 'Calucalte shortest path' clicked, the appropriate edges will be marked in red. Then one has to click 'Reset' in order to start over again.
+Most of the js libraries are loaded from CDNs in order to distribute the load.
+For a first look and feel of the app please have a look at the ###[Demo.avi](https://github.com/dwlodarz/GraphTraversal/blob/master/Demo.avi)###.
+
+## Unit Tests ##
+Due to lack of time and other previously scheduled task I cover only a single class with unit test (NodeManager) from the BLL project. This was only meant to show that I understand the concept off.
+
 
 
