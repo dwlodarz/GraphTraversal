@@ -30,8 +30,9 @@
 ## Console App setup
 - The only configuration required is the Source folder of the xmls
 <p align="center">  <img src="/ReadMeImages/3.PNG" width="450"/></p>
-> ** Test Data**
-> Test data is located in ['GraphTraversal/GraphXml/'](https://github.com/dwlodarz/GraphTraversal/tree/master/GraphXml)
+
+> **Test Data**
+> - Test data is located in ['GraphTraversal/GraphXml/'](https://github.com/dwlodarz/GraphTraversal/tree/master/GraphXml)
 
 
 
