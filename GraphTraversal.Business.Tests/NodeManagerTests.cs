@@ -47,9 +47,9 @@ namespace GraphTraversal.Business.Tests
         [Test]
         public async Task RelatePath_SuccesfullyCallsAddAndRelate()
         {
-            var nodeModel = this.fixture.Create<NodeModel>();
+            var nodeModel = this.fixture.Build<NodeModel>().Without(x => x.AdjacentNodes).CreateAnonymous();
             var adjacentNodes = this.fixture.CreateMany<NodeEntity>(2);
-            var nodeEntity = new NodeEntity{Id = nodeModel.Id, Label = nodeModel.Label, Cost = 1};
+            var nodeEntity = new NodeEntity { Id = nodeModel.Id, Label = nodeModel.Label, Cost = 1 };
 
 
             this.repository.AddOrUpdateAsync(Arg.Any<NodeEntity>()).Returns(Task.FromResult<NodeEntity>(nodeEntity));
