@@ -2,7 +2,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/5slaym3urfywwcb9?svg=true)](https://ci.appveyor.com/project/dwlodarz/graphtraversal)
 
 ## Technologies used
-- Continuous Integration + Uni Test Runner - [AppVeyor](https://ci.appveyor.com/project/dwlodarz/graphtraversal)
+- Continuous Integration + Uni Test Runner - [AppVeyor](https://ci.appveyor.com/project/dwlodarz/graphtraversal) [![Build status](https://ci.appveyor.com/api/projects/status/5slaym3urfywwcb9?svg=true)](https://ci.appveyor.com/project/dwlodarz/graphtraversal)
 - Dependency Injection - [SimpleInjector](https://simpleinjector.org/index.html)
 - Exception logging - log4net
 - Model <-> Entity mapping - AutoMapper
@@ -30,5 +30,8 @@
 ## Console App setup
 - The only configuration required is the Source folder of the xmls
 <p align="center">  <img src="/ReadMeImages/3.PNG" width="450"/></p>
+> ** Test Data**
+> Test data is located in ['GraphTraversal/GraphXml/'](https://github.com/dwlodarz/GraphTraversal/tree/master/GraphXml)
+
 
 
