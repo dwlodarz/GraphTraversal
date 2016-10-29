@@ -45,7 +45,7 @@ namespace GraphTraversal.Business.Tests
         }
 
         [Test]
-        public async void RelatePath_SuccesfullyCallsAddAndRelate()
+        public async Task RelatePath_SuccesfullyCallsAddAndRelate()
         {
             var nodeModel = this.fixture.Create<NodeModel>();
             var adjacentNodes = this.fixture.CreateMany<NodeEntity>(2);
