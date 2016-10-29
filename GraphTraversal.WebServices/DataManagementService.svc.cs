@@ -38,6 +38,13 @@ namespace GraphTraversal.WebServices
         {
             try
             {
+                if (node == null)
+                {
+                    WebOperationContext ctx = WebOperationContext.Current;
+                    ctx.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.NoContent;
+                    return;
+                }
+
                 await this.Manager.RelatePath(node);
             }
             catch (Exception e)

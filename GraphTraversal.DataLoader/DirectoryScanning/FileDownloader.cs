@@ -12,7 +12,7 @@ namespace GraphTraversal.DataLoader.DirectoryScanning
     /// <summary>
     /// Gets Files from the directory.
     /// </summary>
-    public class FileDownloader
+    public class FileDownloader : GraphTraversal.DataLoader.DirectoryScanning.IFileDownloader
     {
         /// <summary>
         /// Path to the content directory.

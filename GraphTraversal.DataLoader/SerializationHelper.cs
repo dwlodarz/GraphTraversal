@@ -54,7 +54,7 @@ namespace GraphTraversal.DataLoader
         {
             if (data != null)
             {
-                return JsonConvert.SerializeObject(data);
+                return JsonConvert.SerializeObject(new { node = data });
             }
 
             return null;

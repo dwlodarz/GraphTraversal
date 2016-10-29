@@ -1,4 +1,6 @@
-﻿using SimpleInjector;
+﻿using GraphTraversal.DataLoader.DirectoryScanning;
+using GraphTraversal.DataLoader.Http;
+using SimpleInjector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +23,10 @@ namespace GraphTraversal.DataLoader
         {
             container = new Container();
 
-            // Register your types, for instance:
-            //container.Register<IUserContext, WinFormsUserContext>();
-            // Optionally verify the container.
+            container.Register<IFileDownloader, FileDownloader>(Lifestyle.Transient);
+            container.Register<IFileContentTransmitter, FileContentTransmitter>(Lifestyle.Transient);
+            container.Register<IFileServiceUploader, FileServiceUploader>(Lifestyle.Transient);
+
             container.Verify();
         }
     }

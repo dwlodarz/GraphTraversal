@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraphTraversal.DataLoader.DirectoryScanning;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,10 @@ namespace GraphTraversal.DataLoader
         {
             //init of DI.
             Bootstrap.Start();
+
+            var fileContentTransmitter = Bootstrap.container.GetInstance<IFileContentTransmitter>();
+            fileContentTransmitter.GetFilesAndPushThemToServiceEndpoint();
+            Console.ReadLine();
         }
     }
 }
