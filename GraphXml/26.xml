@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <node>
-<id>1</id>
-<label>Node 1</label>
+<id>26</id>
+<label>Node 26</label>
 <adjacentNodes>
-<id>2</id> <id>3</id><id>25</id><id>26</id>
+<id>28</id><id>29</id>
 </adjacentNodes>
 </node>

@@ -34,14 +34,26 @@ namespace GraphTraversal.DataLoader.DirectoryScanning
         /// <typeparam name="T">Contained type.</typeparam>
         /// <param name="fileName">The file name.</param>
         /// <returns>Typed content.</returns>
-        public T GetFileContentSerialized<T>(string fileName) where T:class, new()
+        public T GetFileContentSerialized<T>(string fileName, int noOfTries = 0) where T : class, new()
         {
-            string content = File.ReadAllText(Path.Combine(dirPath, fileName));
-            if (!string.IsNullOrEmpty(content))
+            try
             {
-                return content.XmlDeserializeFromString<T>();
-            }
+                if (noOfTries > 10)
+                {
+                    return null;
+                }
 
+                string content = File.ReadAllText(Path.Combine(dirPath, fileName));
+                if (!string.IsNullOrEmpty(content))
+                {
+                    return content.XmlDeserializeFromString<T>();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("There was an error while reading the file: " + e.GetBaseException().Message);
+                return this.GetFileContentSerialized<T>(fileName, noOfTries++);
+            }
             return null;
         }
     }

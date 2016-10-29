@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 namespace GraphTraversal.DataLoader.Http
 {
     /// <summary>
@@ -9,6 +10,6 @@ namespace GraphTraversal.DataLoader.Http
         /// <summary>
         /// Uplaod the graph data.
         /// </summary>
-        void UploadGraphData<T>(T content) where T : class;
+        Task UploadGraphData<T>(T content) where T : class;
     }
 }

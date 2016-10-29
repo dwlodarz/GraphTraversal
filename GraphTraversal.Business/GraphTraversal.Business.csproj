@@ -64,6 +64,7 @@
     <Compile Include="Models\NodeModel.cs" />
     <Compile Include="Models\NodeViewModel.cs" />
     <Compile Include="Models\ShortestPathModel.cs" />
+    <Compile Include="NodeEntityExtensions.cs" />
     <Compile Include="NodeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TraversingManager.cs" />

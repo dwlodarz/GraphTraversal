@@ -26,8 +26,8 @@ namespace GraphTraversal.Business
         /// Initializes a new instance of the <see cref="NodeManager"/> class.
         /// </summary>
         /// <param name="dbClient">Database context.</param>
-        public NodeManager(IClient dbClient, INodeRepository nodeRepository)
-            : base(dbClient)
+        public NodeManager(INodeRepository nodeRepository)
+            : base()
         {
             this.nodeRepository = nodeRepository;
         }
@@ -37,10 +37,13 @@ namespace GraphTraversal.Business
         /// </summary>
         /// <param name="node">The root node of a subtree.</param>
         /// <returns>The task</returns>
-        public async Task RelatePath(NodeModel node)
+        public async Task RelatePath(NodeModel nodeModel)
         {
-            await this.AddOrUpdateAsync(node);
-            await this.AdjacentNodesIfDoNotExistAsync(node.Id, node.AdjacentNodes);
+            var node = AutoMapper.Mapper.Map<NodeEntity>(nodeModel);
+            var adjacentNodes = AutoMapper.Mapper.Map<List<NodeEntity>>(nodeModel.AdjacentNodes);
+
+            await nodeRepository.AddOrUpdateAsync(node);
+            await nodeRepository.AdjacentNodesIfDoNotExistAsync(nodeModel.Id, adjacentNodes);
         }
 
         /// <summary>
@@ -74,80 +77,6 @@ namespace GraphTraversal.Business
             }
 
             return viewModel;
-        }
-
-        /// <summary>
-        /// Adds new node if it doesn't exist.
-        /// </summary>
-        /// <param name="node">New node entity.</param>
-        /// <returns>The Task.</returns>
-        private async Task<NodeEntity> AddOrUpdateAsync(NodeModel nodeModel)
-        {
-            try
-            {
-                var node = AutoMapper.Mapper.Map<NodeEntity>(nodeModel);
-                node.Cost = 1;
-
-                await this.DbContext.Cypher
-                    .Merge("(n:NodeEntity { Id: {id} })")
-                    .OnCreate()
-                    .Set("n = {node}")
-                    .WithParams(new
-                    {
-                        id = node.Id,
-                        node
-                    })
-                    .ExecuteWithoutResultsAsync();
-
-                //update label
-                await this.DbContext.Cypher
-                    .Match("(n:NodeEntity)")
-                    .Where((NodeEntity n) => n.Id == node.Id)
-                    .Set("n.Label = {label}")
-                    .WithParam("label", node.Label)
-                    .ExecuteWithoutResultsAsync();
-
-                return node;
-            }
-            catch (Exception e)
-            {
-                log.ErrorFormat("Add new node entity failed: {0}", e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Add adjacent node if there are non existent.
-        /// </summary>
-        /// <param name="adjacentNodes">Adjacent node.</param>
-        /// <param name="rootId">Root id.</param>
-        /// <returns></returns>
-        private async Task AdjacentNodesIfDoNotExistAsync(string rootId, IEnumerable<NodeModel> adjacentNodes)
-        {
-            try
-            {
-                if (adjacentNodes != null && adjacentNodes.Any())
-                {
-                    adjacentNodes.ToList().ForEach(async nodeModel =>
-                    {
-                        var node = await this.AddOrUpdateAsync(nodeModel);
-
-                        //relate bidirectional root with adjacent node
-                        await this.DbContext.Cypher
-                        .Match("(root:NodeEntity)", "(childNode:NodeEntity)")
-                        .Where((NodeEntity root) => root.Id == rootId)
-                        .AndWhere((NodeEntity childNode) => childNode.Id == node.Id)
-                        .CreateUnique("(root)-[:CONNECTED]->(childNode)")
-                        .CreateUnique("(childNode)-[:CONNECTED]->(root)")
-                        .ExecuteWithoutResultsAsync();
-                    });
-                }
-            }
-            catch (Exception e)
-            {
-                log.ErrorFormat("Add adjacent node entity failed: {0}", e);
-                throw;
-            }
         }
     }
 }

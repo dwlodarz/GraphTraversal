@@ -18,6 +18,6 @@ namespace GraphTraversal.DataLoader.DirectoryScanning
         /// <typeparam name="T">Contained type.</typeparam>
         /// <param name="fileName">The file name.</param>
         /// <returns>Typed content.</returns>
-        T GetFileContentSerialized<T>(string fileName) where T : class, new();
+        T GetFileContentSerialized<T>(string fileName, int noOfTries = 0) where T : class, new();
     }
 }

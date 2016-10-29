@@ -24,8 +24,8 @@ namespace GraphTraversal.Business
         /// Initializes a new instance of the <see cref="TraversingManager"/> class.
         /// </summary>
         /// <param name="dbClient">Database context.</param>
-        public TraversingManager(IClient dbClient, INodeRepository nodeRepository)
-            : base(dbClient)
+        public TraversingManager(INodeRepository nodeRepository)
+            : base()
         {
             this.NodeRepository = nodeRepository;
         }
@@ -38,21 +38,29 @@ namespace GraphTraversal.Business
         /// <returns>The shortest path.</returns>
         public async Task<ShortestPathModel> ShortestPath(string startId, string endId)
         {
-            if (string.IsNullOrEmpty(startId) || string.IsNullOrEmpty(endId))
+            try
             {
-                log.Error("Provided node pair for shortest path calculation is empty");
-                return null;
+                if (string.IsNullOrEmpty(startId) || string.IsNullOrEmpty(endId))
+                {
+                    log.Error("Provided node pair for shortest path calculation is empty");
+                    return null;
+                }
+
+                var wholeTree = await this.NodeRepository.GetWholeTree();
+                var shortestPath = this.PerformCalculation(startId, endId, wholeTree);
+
+                if (shortestPath == null || !shortestPath.Any())
+                {
+                    return null;
+                }
+
+                return new ShortestPathModel { Path = shortestPath.Select(sp => new NodeViewModel { Id = sp }).ToList() };
             }
-
-            var wholeTree = await this.NodeRepository.GetWholeTree();
-            var shortestPath = this.PerformCalculation(startId, endId, wholeTree);
-
-            if (shortestPath == null || !shortestPath.Any())
+            catch (Exception e)
             {
-                return null;
+                log.Error("Shortest path finiding failed", e);
+                throw;
             }
-
-            return new ShortestPathModel { Path = shortestPath.Select(sp => new NodeViewModel { Id = sp }).ToList() };
         }
 
         /// <summary>
@@ -66,6 +74,7 @@ namespace GraphTraversal.Business
         {
             var visited = new Dictionary<string, string>();
             List<string> path = null;
+            wholeTree = wholeTree.DistinctBy(wt => wt.Root.Id);
 
             //Dictionary for storing sums of distances between nodes.
             var distances = wholeTree.ToDictionary(k => k.Root.Id, v => int.MaxValue);

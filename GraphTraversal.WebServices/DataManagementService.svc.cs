@@ -47,7 +47,7 @@ namespace GraphTraversal.WebServices
 
                 await this.Manager.RelatePath(node);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 WebOperationContext ctx = WebOperationContext.Current;
                 ctx.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;

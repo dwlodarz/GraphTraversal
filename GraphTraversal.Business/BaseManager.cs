@@ -23,17 +23,11 @@ namespace GraphTraversal.Business
         protected static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// Gets or sets database context.
-        /// </summary>
-        protected IClient DbContext { get; private set; }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="BaseManager"/> class.
         /// </summary>
         /// <param name="dbContext">Database context.</param>
-        protected BaseManager(IClient dbContext)
+        protected BaseManager()
         {
-            this.DbContext = dbContext;
             this.CreateMaps();
         }
 
